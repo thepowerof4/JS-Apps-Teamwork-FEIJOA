@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.posttDataModel = (function() {
+app.postDataModel = (function() {
     function PostDataModel(baseUrl, requester, headers) {
         this._requester = requester;
         this._headers = headers;
