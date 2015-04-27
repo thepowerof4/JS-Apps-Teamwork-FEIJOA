@@ -2,11 +2,12 @@
 </aside>
 {{#posts}}
 <article>
-    <h3>{{title}}</h3>
+    <h2>{{title}}</h2>
     <p>{{content}}</p>
     <p>
-        <span>Tags:</span>
-        Array will be displayed here
+        <span>Tags: </span>
+        {{#tags}} | {{.}}{{/tags}}
     </p>
+    <p>Viewed {{visitCount}} times</p>
 </article>
 {{/posts}}
