@@ -12,8 +12,12 @@ app.requester = (function() {
         return makeRequest('POST', headers, url, data);
     };
 
-    Requester.prototype.put = function(url, headers, data){
-        return makeRequest('PUT', headers, url, data); // +id!!
+    Requester.prototype.put = function(URL, headers, data){
+        return makeRequest('PUT', URL, headers, data);
+    };
+
+    Requester.prototype.delete = function(URL, headers){
+        return makeRequest('DELETE', URL, headers);
     };
 
     function makeRequest(method, headers, url, data) {
