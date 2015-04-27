@@ -9,6 +9,19 @@ var app = app || {};
     var model = app.postDataModel.load('https://api.parse.com/1/', requester, headers);
     var controller = app.postsController.load(model);
 
-    var selector = '#wrapper';
-    controller.loadPosts(selector);
+    app.router = Sammy(function () {
+        var selector = '#wrapper';
+
+        this.get('#/', function () {
+            controller.loadPosts(selector);
+        });
+
+        this.get('#/viewPost/:id', function() {
+            var postId = this.params['id'];
+            controller.viewPost(selector, postId);
+        });
+    });
+
+    app.router.run('#/');
+
 }());

@@ -56,10 +56,8 @@ header p {
     display: block;
     float: left;
     padding: 20px;
-    padding-bottom: 0;
     margin-bottom: 20px;
     width: 650px;
-    min-height: 200px;
     background-color: white;
     box-shadow: 0 0 5px lightgrey;
 }

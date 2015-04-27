@@ -1,5 +1,3 @@
-<aside>
-</aside>
 {{#posts}}
 <article>
     <h2>{{title}}</h2>
@@ -9,5 +7,6 @@
         {{#tags}} | {{.}}{{/tags}}
     </p>
     <p>Viewed {{visitCount}} times</p>
+    <a href="#/viewPost/{{objectId}}">View post</a>
 </article>
 {{/posts}}

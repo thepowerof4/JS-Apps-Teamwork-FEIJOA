@@ -34,6 +34,10 @@ app.postsController = (function() {
             })
     };
 
+    PostsController.prototype.viewPost = function (selector, postId) {
+
+    };
+
     return {
         load: function (model) {
             return new PostsController(model);
