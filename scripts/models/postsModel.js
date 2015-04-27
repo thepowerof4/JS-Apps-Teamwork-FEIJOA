@@ -4,7 +4,7 @@ app.postDataModel = (function() {
     function PostDataModel(baseUrl, requester, headers) {
         this._requester = requester;
         this._headers = headers;
-        this._serviceUrl = baseUrl + 'classes/Post';
+        this._serviceUrl = baseUrl + 'classes/Post/';
     }
 
     PostDataModel.prototype.getPosts = function () {
@@ -15,6 +15,12 @@ app.postDataModel = (function() {
     PostDataModel.prototype.addPost = function (post) {
         var headers = this._headers.getHeaders();
         return this._requester.post(this._serviceUrl, headers, post);
+    };
+
+    PostDataModel.prototype.getSinglePost = function (postId) {
+        var headers = this._headers.getHeaders();
+        return this._requester.get(this._serviceUrl + postId, headers);
+
     };
 
     return {

@@ -18,7 +18,7 @@ var app = app || {};
 
         this.get('#/viewPost/:id', function() {
             var postId = this.params['id'];
-            controller.viewPost(selector, postId);
+            controller.viewSinglePost(selector, postId);
         });
     });
 

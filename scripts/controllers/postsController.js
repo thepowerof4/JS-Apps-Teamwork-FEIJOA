@@ -14,6 +14,7 @@ app.postsController = (function() {
                 };
 
                 app.allPostsView.render(_this, selector, outputData);
+
             }, function (error) {
                 console.log(error.responseText);
             })
@@ -34,8 +35,14 @@ app.postsController = (function() {
             })
     };
 
-    PostsController.prototype.viewPost = function (selector, postId) {
-
+    PostsController.prototype.viewSinglePost = function (selector, postId) {
+        var _this = this;
+        this._model.getSinglePost(postId)
+            .then(function (singlePost) {
+                app.singlePostView.render(_this, selector, singlePost);
+            }, function (error) {
+                console.log(error.responseText);
+            })
     };
 
     return {
