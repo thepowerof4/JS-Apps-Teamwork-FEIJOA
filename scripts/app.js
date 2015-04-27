@@ -23,5 +23,4 @@ var app = app || {};
     });
 
     app.router.run('#/');
-
 }());

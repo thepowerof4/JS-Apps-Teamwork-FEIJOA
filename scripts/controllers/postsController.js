@@ -24,7 +24,7 @@ app.postsController = (function() {
         var post = {
             title: title,
             content: content,
-            tags: (tags.replace(/\s+/g, '')).split(', ') // Array of tags
+            tags: (tags.replace(/\s+/g, '')).split(',')
         };
 
         this._model.addPost(post)
