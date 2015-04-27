@@ -54,7 +54,7 @@ header a:nth-child(2) {
 header a:nth-child(3) {
     position: absolute;
     bottom: 20px;
-    left: 30px;
+    right: 143px;
     text-decoration: none;
     color: white;
     font-size: 20px;
