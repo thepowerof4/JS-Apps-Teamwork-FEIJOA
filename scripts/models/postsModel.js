@@ -5,6 +5,7 @@ app.postDataModel = (function() {
         this._requester = requester;
         this._headers = headers;
         this._serviceUrl = baseUrl + 'classes/Post/';
+        this._baseUrl = baseUrl;
     }
 
     PostDataModel.prototype.getPosts = function () {
@@ -20,7 +21,11 @@ app.postDataModel = (function() {
     PostDataModel.prototype.getSinglePost = function (postId) {
         var headers = this._headers.getHeaders();
         return this._requester.get(this._serviceUrl + postId, headers);
+    };
 
+    PostDataModel.prototype.getComments = function (postId) {
+        var headers = this._headers.getHeaders();
+        return this._requester.get(this._baseUrl + 'classes/Comment?where={"post":{"__type": "Pointer","className": "Post","objectId": "' + postId + '"}}', headers);
     };
 
     PostDataModel.prototype.incrementPostVisits = function (postId, newVisitCount) {
