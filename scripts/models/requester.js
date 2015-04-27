@@ -12,6 +12,10 @@ app.requester = (function() {
         return makeRequest('POST', headers, url, data);
     };
 
+    Requester.prototype.put = function(url, headers, data){
+        return makeRequest('PUT', headers, url, data); // +id!!
+    };
+
     function makeRequest(method, headers, url, data) {
         var deffer = Q.defer();
 

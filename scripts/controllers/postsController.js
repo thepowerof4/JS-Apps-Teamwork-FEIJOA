@@ -37,9 +37,11 @@ app.postsController = (function() {
 
     PostsController.prototype.viewSinglePost = function (selector, postId) {
         var _this = this;
-        this._model.getSinglePost(postId)
+        _this._model.getSinglePost(postId)
             .then(function (singlePost) {
                 app.singlePostView.render(_this, selector, singlePost);
+                _this._model.incrementPostVisits(postId, singlePost.visitCount + 1);
+
             }, function (error) {
                 console.log(error.responseText);
             })
