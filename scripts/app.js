@@ -20,6 +20,11 @@ var app = app || {};
             var postId = this.params['id'];
             controller.viewSinglePost(selector, postId);
         });
+
+        this.get('#/login', function() {
+            app.loginView.render(selector);
+        });
+
     });
 
     app.router.run('#/');
