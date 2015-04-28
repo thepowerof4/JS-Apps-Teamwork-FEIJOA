@@ -3,7 +3,7 @@ var app = app || {};
 app.registerView = (function(selector, controller) {
     function render(selector, controller) {
         $.get('templates/register.html', function (template) {
-            var output = Mustache.render(template, data);
+            var output = Mustache.render(template);
             $(selector).html(output);
         })
         //$.ajax({
