@@ -30,9 +30,7 @@ app.postDataModel = (function() {
 
     PostDataModel.prototype.incrementPostVisits = function (postId, newVisitCount) {
         var headers = this._headers.getHeaders();
-        var data = {
-            visitCount: newVisitCount
-        };
+        var data = '{ "visitCount": ' + newVisitCount + '}';
         return this._requester.put(this._serviceUrl + postId, headers, data);
     };
 

@@ -13,7 +13,7 @@ app.requester = (function() {
     };
 
     Requester.prototype.put = function(URL, headers, data){
-        return makeRequest('PUT', URL, headers, data);
+        return makeRequest('PUT', headers, URL, data);
     };
 
     Requester.prototype.delete = function(URL, headers){

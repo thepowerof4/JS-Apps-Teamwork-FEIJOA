@@ -8,6 +8,7 @@ app.userDataModel = (function() {
     }
 
     UserDataModel.prototype.addUser = function (user) {
+        user = JSON.stringify(user);
         var headers = this._headers.getHeaders();
         return this._requester.post(this._serviceUrl, headers, user);
     };
