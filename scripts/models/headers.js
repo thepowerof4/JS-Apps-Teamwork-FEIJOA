@@ -15,7 +15,7 @@ app.headers = (function() {
         };
 
         if (sessionStorage['logged-in']) {
-            headers['X-Parse-Session-Token'] = sessionStorage['logged-in'];
+            headers['X-Parse-Session-Token'] = JSON.parse(sessionStorage['logged-in']).sessionToken;
         }
 
         return headers;

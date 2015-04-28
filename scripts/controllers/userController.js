@@ -12,16 +12,23 @@ app.userController = (function() {
         };
 
         this._model.addUser(user)
-            .then(function () {
+            .then(function (data) {
+                user["sessionToken"] = data.sessionToken;
+                sessionStorage.setItem("logged-in", JSON.stringify(user));
             }, function (error) {
                 console.log(error.responseText);
             })
     };
 
     UserController.prototype.loginUser = function (username, password) {
-
+        var user = {
+            username: username,
+            password: password
+        };
         this._model.loginUser(username, password)
-            .then(function () {
+            .then(function (data) {
+                user["sessionToken"] = data.sessionToken;
+                sessionStorage.setItem("logged-in", JSON.stringify(user));
             }, function (error) {
                 console.log(error.responseText);
             })
