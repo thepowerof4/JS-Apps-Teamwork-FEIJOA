@@ -1,20 +1,27 @@
 var app = app || {};
 
 app.singlePostView = (function() {
-    function render(controller, selector, data) {
+    function render(controller, selector, data, postId) {
         $(selector).html('');
         $.get('templates/singlePost.html', function (template) {
             var output = Mustache.render(template, data);
             $(selector).html(output);
         });
 
-        /*            .then(function () {
-         $('#addStudent').click(function () {
-         var studentName = $('#name').val();
-         var studentGrade = $('#grade').val();
-         controller.addPost('#students', studentName, studentGrade);
+        $.get('templates/postComment.html', function (template) {
+            var postForm = $("<div>").html(template);
+            $(selector + " article").append(postForm);
+        }).then(function () {
+            if(sessionStorage['logged-in']){
+                var user = JSON.parse(sessionStorage['logged-in']);
+                $('#author').val(user.username);
+            }
+         $('#submit').click(function () {
+         var author = $('#author').val();
+         var content = $('#content').val();
+         controller.addComment(author, content, data.objectId);
          })
-         });*/
+         });
     }
 
     return {

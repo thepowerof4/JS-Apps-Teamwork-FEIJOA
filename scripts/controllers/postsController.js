@@ -35,17 +35,18 @@ app.postsController = (function() {
             })
     };
 
-    PostsController.prototype.addComment = function (postId ,author, content) {
+    PostsController.prototype.addComment = function (author, content, postId) {
+        console.log(postId);
         var comment = {
             author: author,
-            content: content,
-            Post: {
-                __type: "Pointer",
-                className: "Post",
-                objectId : postId
+            commentContent: content,
+            post: {
+                '__type': 'Pointer',
+                'className': 'Post',
+                'objectId' : postId
             }
         };
-        this._model.addComment(comment);
+        this._model.addComment(JSON.stringify(comment));
     };
 
     PostsController.prototype.viewSinglePost = function (selector, postId) {
@@ -54,7 +55,7 @@ app.postsController = (function() {
             .then(function (singlePost) {
                 _this._model.getComments(singlePost.objectId)
                     .then(function (comments) {
-                        app.commentsView.render(_this, selector, comments.results);
+                        app.commentsView.render(_this, selector, comments.results, postId);
                     }, function () {
                         console.log("has Error");
                     });
