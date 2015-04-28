@@ -54,10 +54,11 @@ app.postsController = (function() {
             .then(function (singlePost) {
                 _this._model.getComments(singlePost.objectId)
                     .then(function (comments) {
-                        console.log(comments);
-                        singlePost.comments = comments.results;
+                        app.commentsView.render(_this, selector, comments.results);
+                    }, function () {
+                        console.log("has Error");
                     });
-                console.log(singlePost);
+
                 app.singlePostView.render(_this, selector, singlePost);
                 _this._model.incrementPostVisits(postId, singlePost.visitCount + 1);
 
