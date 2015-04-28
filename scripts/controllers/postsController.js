@@ -57,6 +57,7 @@ app.postsController = (function() {
                         console.log(comments);
                         singlePost.comments = comments.results;
                     });
+                console.log(singlePost);
                 app.singlePostView.render(_this, selector, singlePost);
                 _this._model.incrementPostVisits(postId, singlePost.visitCount + 1);
 
