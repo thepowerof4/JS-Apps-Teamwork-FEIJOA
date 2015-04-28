@@ -2,7 +2,9 @@
     if(sessionStorage['logged-in']){
         $("#mainMenuButtons").empty();
         var user = JSON.parse(sessionStorage['logged-in']);
-        $("#mainMenuButtons").append($("<span>").text(user.username));
+        $("#mainMenuButtons")
+            .append($("<a href=\"#/\">Home |  </a>"))
+            .append($("<span>").text(user.username));
     }else{
         $("#mainMenuButtons").empty();
 
