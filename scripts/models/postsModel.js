@@ -29,6 +29,11 @@ app.postDataModel = (function() {
         return this._requester.get(this._baseUrl + 'classes/Comment?where={"post":{"__type": "Pointer","className": "Post","objectId": "' + postId + '"}}', headers);
     };
 
+    PostDataModel.prototype.addComment = function (comment) {
+        var headers = this._headers.getHeaders();
+        return this._requester.post(this._baseUrl + 'classes/Comment', headers, comment);
+    };
+
     PostDataModel.prototype.incrementPostVisits = function (postId, newVisitCount) {
         var headers = this._headers.getHeaders();
         var data = '{ "visitCount": ' + newVisitCount + '}';

@@ -35,10 +35,28 @@ app.postsController = (function() {
             })
     };
 
+    PostsController.prototype.addComment = function (postId ,author, content) {
+        var comment = {
+            author: author,
+            content: content,
+            Post: {
+                __type: "Pointer",
+                className: "Post",
+                objectId : postId
+            }
+        };
+        this._model.addComment(comment);
+    };
+
     PostsController.prototype.viewSinglePost = function (selector, postId) {
         var _this = this;
         _this._model.getSinglePost(postId)
             .then(function (singlePost) {
+                _this._model.getComments(singlePost.objectId)
+                    .then(function (comments) {
+                        console.log(comments);
+                        singlePost.comments = comments.results;
+                    });
                 app.singlePostView.render(_this, selector, singlePost);
                 _this._model.incrementPostVisits(postId, singlePost.visitCount + 1);
 
