@@ -1,10 +1,10 @@
 var app = app || {};
 
-app.loginView = (function(selector) {
+app.registerView = (function(selector) {
     function render(selector) {
         $.ajax({
             type: 'GET',
-            url: 'templates/login.html',
+            url: 'templates/register.html',
             dataType: 'text',
             success: function (template) {
                 $(selector).html(template);

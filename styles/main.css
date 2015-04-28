@@ -42,22 +42,16 @@ header p {
     font-size: 40px;
 }
 
-header a:nth-child(2) {
+#mainMenuButtons {
     position: absolute;
     bottom: 20px;
     right: 30px;
-    text-decoration: none;
-    color: white;
     font-size: 20px;
 }
 
-header a:nth-child(3) {
-    position: absolute;
-    bottom: 20px;
-    right: 143px;
+#mainMenuButtons a {
     text-decoration: none;
     color: white;
-    font-size: 20px;
 }
 
 .indexPage #wrapper {

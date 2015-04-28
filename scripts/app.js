@@ -25,6 +25,10 @@ var app = app || {};
             app.loginView.render(selector);
         });
 
+        this.get('#/register', function() {
+            app.registerView.render(selector);
+        });
+
     });
 
     app.router.run('#/');
