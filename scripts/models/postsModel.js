@@ -15,6 +15,7 @@ app.postDataModel = (function() {
 
     PostDataModel.prototype.addPost = function (post) {
         var headers = this._headers.getHeaders();
+        post = JSON.stringify(post);
         return this._requester.post(this._serviceUrl, headers, post);
     };
 

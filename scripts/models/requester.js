@@ -26,8 +26,7 @@ app.requester = (function() {
             data = encodeURI(data);
             password = encodeURI(password);
             data = data + '&' + password;
-        } else
-            JSON.stringify(data);
+        }
         $.ajax({
             method: method,
             headers: headers,

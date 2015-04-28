@@ -5,7 +5,21 @@ app.allPostsView = (function() {
         $.get('templates/allPosts.html', function (template) {
             var output = Mustache.render(template, data);
             $(selector).html(output);
-        });
+        })
+            .then(function () {
+                if(sessionStorage["logged-in"]){
+                    $.get('templates/postForm.html', function (template) {
+                        var output = Mustache.render(template, data);
+                        $(selector).append(output);
+                        $('#submit').click(function () {
+                            var title = $('#title').val();
+                            var content = $('#content').val();
+                            var tags = $('#tags').val();
+                            controller.addPost(selector, title, content, tags);
+                        })
+                    })
+                }
+                });
         //$.get('templates/allPosts.html', function (template) {
         //    var output = Mustache.render(template, data);
         //    $(selector).html(output);

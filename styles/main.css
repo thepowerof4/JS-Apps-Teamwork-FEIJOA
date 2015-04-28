@@ -99,3 +99,10 @@ footer p {
     margin: 0;
     padding: 0;
 }
+
+#postForm {
+    display: inline-block;
+    padding: 30px;
+    width: 230px;
+    min-height: 30px;
+}
