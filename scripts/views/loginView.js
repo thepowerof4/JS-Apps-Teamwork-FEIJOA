@@ -2,14 +2,18 @@ var app = app || {};
 
 app.loginView = (function(selector, controller) {
     function render(selector, controller) {
-        $.ajax({
-            type: 'GET',
-            url: 'templates/login.html',
-            dataType: 'text',
-            success: function (template) {
-                $(selector).html(template);
-            }
+        $.get('templates/login.html', function (template) {
+            var output = Mustache.render(template, data);
+            $(selector).html(output);
         })
+        //$.ajax({
+        //    type: 'GET',
+        //    url: 'templates/login.html',
+        //    dataType: 'text',
+        //    success: function (template) {
+        //        $(selector).html(template);
+        //    }
+        //})
             .then(function () {
                 $('#loginButton').click(function () {
                     var userName = $('#loginUsername').val();
