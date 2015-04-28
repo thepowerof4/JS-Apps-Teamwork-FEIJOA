@@ -2,10 +2,13 @@ var app = app || {};
 
 app.singlePostView = (function() {
     function render(controller, selector, data) {
-        $(selector).html('');
-        $.get('templates/singlePost.html', function (template) {
-            var output = Mustache.render(template, data);
-            $(selector).html(output);
+        $.ajax({
+            type: 'GET',
+            url: 'templates/singlePost.html',
+            dataType: 'text',
+            success: function (template) {
+                $(selector).html(Mustache.render(template, data));
+            }
         });
 
         /*            .then(function () {
