@@ -29,7 +29,7 @@ app.postsController = (function() {
 
         this._model.addPost(post)
             .then(function () {
-                //app.addPostView.render(selector, post);
+                app.addPostView.render(selector, post);
             }, function (error) {
                 console.log(error.responseText);
             })

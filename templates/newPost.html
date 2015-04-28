@@ -1,0 +1,10 @@
+<article>
+    <h2>{{title}}</h2>
+    <p>{{content}}</p>
+    <p>
+        <span>Tags: </span>
+        {{#tags}} | {{.}}{{/tags}}
+    </p>
+    <p>Viewed {{visitCount}} times</p>
+    <a href="#/viewPost/{{objectId}}">View post</a>
+</article>

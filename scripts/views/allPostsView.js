@@ -7,6 +7,12 @@ app.allPostsView = (function() {
             $(selector).html(output);
         })
             .then(function () {
+                    $.get('templates/asideBar.html', function (template) {
+                        var output = Mustache.render(template, data);
+                        $(selector).append(output);
+                    })
+            })
+            .then(function () {
                 if(sessionStorage["logged-in"]){
                     $.get('templates/postForm.html', function (template) {
                         var output = Mustache.render(template, data);
