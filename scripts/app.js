@@ -6,7 +6,10 @@ var app = app || {};
 
     var headers = app.headers.load(appId, restAPIKey);
     var requester = app.requester.load();
+    var userModel = app.userDataModel.load('https://api.parse.com/1/', requester, headers);
     var model = app.postDataModel.load('https://api.parse.com/1/', requester, headers);
+
+    var userController = app.userController.load(userModel);
     var controller = app.postsController.load(model);
 
     app.router = Sammy(function () {
@@ -22,11 +25,11 @@ var app = app || {};
         });
 
         this.get('#/login', function() {
-            app.loginView.render(selector);
+            app.loginView.render(selector, userController);
         });
 
         this.get('#/register', function() {
-            app.registerView.render(selector);
+            app.registerView.render(selector, userController);
         });
 
     });

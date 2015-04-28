@@ -1,7 +1,7 @@
 var app = app || {};
 
-app.registerView = (function(selector) {
-    function render(selector) {
+app.registerView = (function(selector, controller) {
+    function render(selector, controller) {
         $.ajax({
             type: 'GET',
             url: 'templates/register.html',
@@ -9,12 +9,19 @@ app.registerView = (function(selector) {
             success: function (template) {
                 $(selector).html(template);
             }
-        });
+        })
+            .then(function () {
+         $('#registerButton').click(function () {
+         var userName = $('#registerUsername').val();
+         var userPassword = $('#registerPassword').val();
+         controller.addUser(userName, userPassword);
+         })
+         });
     }
 
     return {
-        render: function (selector) {
-            render(selector);
+        render: function (selector, controller) {
+            render(selector, controller);
         }
     };
 }());

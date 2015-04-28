@@ -4,8 +4,8 @@ app.requester = (function() {
     function Requester() {
     }
 
-    Requester.prototype.get = function (url, headers) {
-        return makeRequest('GET', headers, url);
+    Requester.prototype.get = function (url, headers, username, password) {
+        return makeRequest('GET', headers, url, username, password);
     };
 
     Requester.prototype.post = function (url, headers, data) {
@@ -20,14 +20,19 @@ app.requester = (function() {
         return makeRequest('DELETE', URL, headers);
     };
 
-    function makeRequest(method, headers, url, data) {
+    function makeRequest(method, headers, url, data, password) {
         var deffer = Q.defer();
-
+        if(password) {
+            data = encodeURI(data);
+            password = encodeURI(password);
+            data = data + '&' + password;
+        } else
+            JSON.stringify(data);
         $.ajax({
             method: method,
             headers: headers,
             url: url,
-            data: JSON.stringify(data),
+            data: data,
             success: function (data) {
                 deffer.resolve(data);
             },

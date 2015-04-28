@@ -1,7 +1,7 @@
 var app = app || {};
 
-app.loginView = (function(selector) {
-    function render(selector) {
+app.loginView = (function(selector, controller) {
+    function render(selector, controller) {
         $.ajax({
             type: 'GET',
             url: 'templates/login.html',
@@ -9,12 +9,19 @@ app.loginView = (function(selector) {
             success: function (template) {
                 $(selector).html(template);
             }
-        });
+        })
+            .then(function () {
+                $('#loginButton').click(function () {
+                    var userName = $('#loginUsername').val();
+                    var userPassword = $('#loginPassword').val();
+                    controller.loginUser(userName, userPassword);
+                })
+            });
     }
 
     return {
-        render: function (selector) {
-            render(selector);
+        render: function (selector, controller) {
+            render(selector, controller);
         }
     };
 }());
