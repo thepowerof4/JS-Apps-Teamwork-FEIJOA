@@ -26,7 +26,8 @@ app.postDataModel = (function() {
 
     PostDataModel.prototype.getComments = function (postId) {
         var headers = this._headers.getHeaders();
-        return this._requester.get(this._baseUrl + 'classes/Comment?where={"post":{"__type": "Pointer","className": "Post","objectId": "' + postId + '"}}', headers);
+        return this._requester.get(this._baseUrl + 'classes/Comment?where={"post":{"__type":' +
+        ' "Pointer","className": "Post","objectId": "' + postId + '"}}', headers);
     };
 
     PostDataModel.prototype.addComment = function (comment) {

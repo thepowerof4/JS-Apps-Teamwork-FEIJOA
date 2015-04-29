@@ -55,7 +55,7 @@ app.postsController = (function() {
             .then(function (singlePost) {
                 _this._model.getComments(singlePost.objectId)
                     .then(function (comments) {
-                        app.commentsView.render(_this, selector, comments.results, postId);
+                        app.commentsView.render(selector, comments.results, postId);
                     }, function () {
                         console.log("has Error");
                     });

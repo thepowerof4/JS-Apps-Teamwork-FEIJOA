@@ -4,7 +4,6 @@ app.userDataModel = (function() {
         this._headers = headers;
         this._serviceUrl = baseUrl + 'classes/_User/';
         this._loginUrl = baseUrl + 'login/';
-        this._baseUrl = baseUrl;
     }
 
     UserDataModel.prototype.addUser = function (user) {

@@ -6,20 +6,18 @@ app.registerView = (function(selector, controller) {
             var output = Mustache.render(template);
             $(selector).html(output);
         })
-        //$.ajax({
-        //    type: 'GET',
-        //    url: 'templates/register.html',
-        //    dataType: 'text',
-        //    success: function (template) {
-        //        $(selector).html(template);
-        //    }
-        //})
             .then(function () {
-         $('#registerButton').click(function () {
-         var userName = $('#registerUsername').val();
-         var userPassword = $('#registerPassword').val();
-         controller.addUser(userName, userPassword);
-         })
+             $('#registerButton').click(function () {
+                 var userName = $('#registerUsername').val();
+                 var userPassword = $('#registerPassword').val();
+                 var repeatPassword = $('#registerRepeatPassword').val();
+                 if(userPassword == repeatPassword) {
+                     controller.addUser(userName, userPassword);
+                     $(selector).append('Successfully registered.')
+                 } else {
+                     $(selector).append('Password doesnt match.')
+                 }
+             })
          });
     }
 

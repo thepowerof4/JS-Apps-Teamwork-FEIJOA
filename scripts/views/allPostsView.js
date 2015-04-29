@@ -14,6 +14,11 @@ app.allPostsView = (function() {
             })
             .then(function () {
                 if(sessionStorage["logged-in"]){
+                    $("#mainMenuButtons").empty();
+                    var user = JSON.parse(sessionStorage['logged-in']);
+                    $("#mainMenuButtons")
+                        .append($("<a href=\"#/\">Home |  </a>"))
+                        .append($("<span>").text(user.username));
                     $.get('templates/postForm.html', function (template) {
                         var output = Mustache.render(template, data);
                         $(selector).append(output);
@@ -25,18 +30,8 @@ app.allPostsView = (function() {
                         })
                     })
                 }
-                });
-        //$.get('templates/allPosts.html', function (template) {
-        //    var output = Mustache.render(template, data);
-        //    $(selector).html(output);
-        //});
-/*            .then(function () {
-                $('#addStudent').click(function () {
-                    var studentName = $('#name').val();
-                    var studentGrade = $('#grade').val();
-                    controller.addPost('#students', studentName, studentGrade);
-                })
-            });*/
+            }
+        );
     }
 
     return {
